@@ -1,5 +1,6 @@
 const titleClickHandler = function(event){
   const clickedElement = this;
+  event.preventDefault();
   console.log('Link was clicked!');
 
   /* [DONE] remove class 'active' from all article links  */
@@ -24,7 +25,6 @@ const titleClickHandler = function(event){
 }
 
 const links = document.querySelectorAll('.titles a');
-const clickedElement = this;
 activeLink.classList.add('active');
 for(let link of links){
   link.addEventListener('click', titleClickHandler);

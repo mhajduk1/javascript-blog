@@ -3,7 +3,8 @@
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector ='.post-tags .list';
+  optArticleTagsSelector ='.post-tags .list',
+  optTitleListSelector = '.titles';
 function clearMessages(){
   const titleList = document.querySelector(optTitleListSelector);
   document.getElementById('messages').innerHTML = titleList;
@@ -77,9 +78,11 @@ for(let link of links){
 }
 function generateTags(){
   /* find all articles */
-
+  const articles =  document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
+  for(let article of articles){
 
+  }
     /* find tags wrapper */
 
     /* make html variable with empty string */

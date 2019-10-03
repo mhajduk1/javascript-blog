@@ -33,7 +33,7 @@ function generateTitleLinks(){
 
   const links = document.querySelectorAll('.titles a');
   for(let link of links){
-    link.addEventListener('click', titleClickHandler);
+    link.addEventListener('click', titleClickHandler, generateTitleLinks);
   }
 }
 const titleClickHandler = function(event){
@@ -73,34 +73,28 @@ const titleClickHandler = function(event){
 
 }
 
-const links = document.querySelectorAll('.titles a');
-for(let link of links){
-  link.addEventListener('click', titleClickHandler, generateTitleLinks);
-}
 function generateTags(){
   /* find all articles */
   const articles =  document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
-  for(let article of articles){
 
-  }
-    /* find tags wrapper */
+  /* find tags wrapper */
 
-    /* make html variable with empty string */
+  /* make html variable with empty string */
 
-    /* get tags from data-tags attribute */
+  /* get tags from data-tags attribute */
 
-    /* split tags into array */
+  /* split tags into array */
 
-    /* START LOOP: for each tag */
+  /* START LOOP: for each tag */
 
-      /* generate HTML of the link */
+  /* generate HTML of the link */
 
-      /* add generated code to html variable */
+  /* add generated code to html variable */
 
-    /* END LOOP: for each tag */
+  /* END LOOP: for each tag */
 
-    /* insert HTML of all the links into the tags wrapper */
+  /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article: */
 }

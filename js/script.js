@@ -24,10 +24,12 @@ function generateTitleLinks(){
 
     /* create HTML of the link */
     const linkHtml = '<li><a href = "#"' + articleId + '><span>' + articleTitle + '</span></a></li>';
+
+    /* create HTML of the link */
+    html = html + linkHTML;
   }
   titleList.innerHTML = titleList.innerHTML + linkHTML;
-  /* create HTML of the link */
-  html = html + linkHTML;
+
   /* insert link into titleList */
   titleList.innerHTML = html;
 
@@ -36,6 +38,7 @@ function generateTitleLinks(){
     link.addEventListener('click', titleClickHandler, generateTitleLinks);
   }
 }
+generateTitleLinks();
 const titleClickHandler = function(event){
   const clickedElement = this;
   event.preventDefault();

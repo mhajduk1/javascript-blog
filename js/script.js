@@ -25,10 +25,12 @@ function generateTitleLinks(){
     /* create HTML of the link */
     const linkHtml = '<li><a href = "#"' + articleId + '><span>' + articleTitle + '</span></a></li>';
 
+    titleList.innerHTML = titleList.innerHTML + linkHTML;
+
     /* create HTML of the link */
     html = html + linkHTML;
   }
-  titleList.innerHTML = titleList.innerHTML + linkHTML;
+
 
   /* insert link into titleList */
   titleList.innerHTML = html;

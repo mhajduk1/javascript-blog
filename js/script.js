@@ -60,10 +60,12 @@ function generateTitleLinks(){
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    titleList.innerHTML = titleList.innerHTML + linkHTML;
+
+    /* create HTML of the link */
+    html = html + linkHTML;
   }
-  titleList.innerHTML = titleList.innerHTML + linkHTML;
-  /* create HTML of the link */
-  html = html + linkHTML;
+
   /* insert link into titleList */
   titleList.innerHTML = html;
 
@@ -71,6 +73,7 @@ function generateTitleLinks(){
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+
 }
 
 
@@ -100,4 +103,5 @@ function generateTags(){
   /* END LOOP: for every article: */
 }
 
-generateTags();
+
+generateTitleLinks();

@@ -158,15 +158,15 @@ function addClickListenersToTags(){
   const clickedElement = this;
   console.log(clickedElement);
   /* make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute('href');
+  const links = document.querySelectorAll('.post-tags a, .tags a');
 
   /* find all links to tags */
-  const tag_links =  document.querySelectorAll('a.active[href^="#tag-"]', 'a[href="' + href + '"]');
+  const tag_links =  document.querySelectorAll('a.active[href^="#tag-"]', 'a[href="' + links + '"]');
   /* START LOOP: for each link */
-  for( let tag of tag_links){
+  for( let link of tag_links){
 
     /* add tagClickHandler as event listener for that link */
-    tag.addEventListener('click', tagClickHandler);
+    link.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
   }
 }
@@ -176,18 +176,18 @@ addClickListenersToTags();
 function generateAuthors(){
 
   /* find all articles */
-  const authors =  document.querySelectorAll(optArticleAuthorsSelector);
+  const articles =  document.querySelectorAll(optArticleSelector);
   //console.log(authors);
   /* START LOOP: for every article: */
-  for (let author of authors) {
+  for (let article of articles) {
     /* find author wrapper */
-    const authorList = document.querySelector (optArticleTagsSelector);
+    const authorList = document.querySelector(optArticleTagsSelector);
 
     /* make html variable with empty string */
     let html = '';
 
     /* get authors from data-author attribute */
-    const articleAuthor = author.getAttribute('data-author');
+    const articleAuthor = article.getAttribute('data-author');
 
     /* generate HTML of the link */
     const linkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor  + '</a></li>' + ' ';

@@ -235,7 +235,7 @@ function authorClickHandler(event){
 }
 
 function addClickListenersToAuthors(){
-  const author_links = document.querySelectorAll(optArticleAuthorsSelector);
+  const author_links = document.querySelectorAll(optArticleAuthorsSelector+' a');
   /* START LOOP: for each link */
   for( let author of author_links){
 

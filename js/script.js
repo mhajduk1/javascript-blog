@@ -7,7 +7,7 @@ const optArticleSelector = '.post',
   optArticleAuthorsSelector ='.post-author',
   optTagsListSelector ='.tags.list',
   optCloudClassCount = 5,
-  optAuthorsListSelector = 'authors.list',
+  optAuthorsListSelector = '.authors',
   optCloudClassPrefix = 'tag-size-';
 
 const titleClickHandler = function(event){
@@ -179,9 +179,10 @@ function generateTags(){
     for(let tag in allTags) {
 
       const tagsParams = calculateTagsParams(allTags);
-      console.log(tagsParams);
-      const tagLinkHTML = '<li><a class="'+ calculateTagClass(allTags[tag], tagsParams) + '" href=#tag-"' + tag + '">'+ tag + '(' + allTags[tag] + ')' +'</a></li>';
+  
 
+      const tagLinkHTML = '<li><a class="'+ calculateTagClass(allTags[tag], tagsParams) + '" href=#tag-"' + tag + '">'+ tag + '(' + allTags[tag] + ')' +'</a></li>';
+ 
       /* [NEW] generate code of a link and add it to allTagsHTML*/
       
       allTagsHTML += tagLinkHTML;
@@ -261,12 +262,14 @@ function generateAuthors(){
 
   /* find all articles */
   const articles =  document.querySelectorAll(optArticleSelector);
+
+  const author_right_menu = document.querySelector(optAuthorsListSelector);
   
   /* START LOOP: for every article: */
   for (let article of articles) {
     
     /* find author wrapper */
-    const authorList = article.querySelector(optArticleAuthorsSelector);
+    let authorList = article.querySelector(optArticleAuthorsSelector);
 
     /* get authors from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
@@ -280,13 +283,26 @@ function generateAuthors(){
     /* add generated code to html variable */
     html = html + linkHTML;
 
-    /* insert link into authorList */
+    /* [NEW] check if this link is NOT already in allAuthors */
+  
+    /* [NEW] create empty html string*/
+    let html_ = '';
+
+    /* [NEW] generate code of a link and add it to authorLinkHTML*/
+    const authorLinkHTML = '<li><a  href=#author-"' + articleAuthor  + '">'+ articleAuthor  +'</a></li>';
+    /* [NEW] add authorLinkHTML string to html_*/
+    html_ = html_ + authorLinkHTML;
+    
+    /* [NEW] generate html code on the page*/
     authorList.innerHTML = html;
 
-    /* END LOOP: for every article: */
+    author_right_menu.innerHTML += html_; 
+
   }
-  
 }
+ 
+  
+
 
 generateAuthors();
 

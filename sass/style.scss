@@ -17,18 +17,23 @@ $font-text: 'Source Sans Pro', sans-serif;
 
 .tag-size-1{
 font-size: 10px;
+color: antiquewhite;
 }
 .tag-size-2{
   font-size: 15px;
+  color: aqua;
 }
 .tag-size-3{
   font-size: 20px;
+  color: aquamarine;
 }
 .tag-size-4{
   font-size: 25px;
+  color: blueviolet;
 }
 .tag-size-5{
   font-size: 30px;
+  color: brown;
 }
 body {
   background: $color-light;
@@ -103,7 +108,7 @@ body {
   display: inline;
 }
 .list-horizontal {
-  li {
+  ul {
     display: inline-block;
   }
 }

@@ -1,5 +1,12 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+};
+
+
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
@@ -71,7 +78,8 @@ function generateTitleLinks(customSelector = ''){
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     titleList.innerHTML = titleList.innerHTML + linkHTML;
 
@@ -178,7 +186,8 @@ function generateTags(){
     for(let tag of articleTagsArray) {
 
       /* generate HTML of the link */
-      const  linkHtml = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const linkHTMLData = {id: tag, title: tag};
+      const linkHtml = templates.tagLink(linkHTMLData);
 
       /* add generated code to html variable */
       html = html + linkHtml;
@@ -308,7 +317,8 @@ function generateAuthors(){
     let html = '';
   
     /* [NEW] generate code of a link and add it to authorLinkHTML*/
-    const authorLinkHTML = '<li><a  href=#author-"' + articleAuthor  + '">'+ articleAuthor  +'</a></li>';
+    const linkHTMLData = {id: articleAuthor, title: articleAuthor};
+    const authorLinkHTML = templates.authorLink(linkHTMLData);
 
     /* [NEW] add authorLinkHTML string to html_*/
     html = html + authorLinkHTML;
@@ -326,12 +336,12 @@ function generateAuthors(){
     author_right_menu.innerHTML += html; 
 
   }
-   /* [NEW] find list of authors in right column */
-   const authorCloudList = document.querySelector('.authors');
+  /* [NEW] find list of authors in right column */
+  const authorCloudList = document.querySelector('.authors');
 
-   const authorParams = calculateAuthorsParams(allAuthors);
+  const authorParams = calculateAuthorsParams(allAuthors);
 
-   let allAuthorsHTML = ' ';
+  let allAuthorsHTML = ' ';
 
   /* [NEW] START LOOP: for each author in allAuthors: */
   for (let articleAuthor in allAuthors) {
@@ -340,10 +350,10 @@ function generateAuthors(){
     const authorLinkHTML = '<li><a class ="tag-size-' + calculateAuthorClass(allAuthors[articleAuthor], authorParams) +'" href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>' + ' ';
     
     allAuthorsHTML += authorLinkHTML;
-     /* [NEW] END LOOP: for each author in allAuthors: */
-   }
+    /* [NEW] END LOOP: for each author in allAuthors: */
+  }
 
-   /* [NEW] add html from allAuthors to authorList */
+  /* [NEW] add html from allAuthors to authorList */
   authorCloudList.innerHTML = allAuthorsHTML;
 }
  
